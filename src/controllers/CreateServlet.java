@@ -37,19 +37,19 @@ public class CreateServlet extends HttpServlet {
             EntityManager em = DBUtil.createEntityManager();
             em.getTransaction().begin();
 
-            Task m = new Task();
+            Task t = new Task();
 
             String id = request.getParameter("id");
-            m.setId(Integer.parseInt(id));
+            t.setId(Integer.parseInt(id));
 
             String content = request.getParameter("content");
-            m.setContent(content);
+            t.setContent(content);
 
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
-            m.setCreated_at(currentTime);
-            m.setUpdated_at(currentTime);
+            t.setCreated_at(currentTime);
+            t.setUpdated_at(currentTime);
 
-            em.persist(m);
+            em.persist(t);
             em.getTransaction().commit();
             em.close();
 
